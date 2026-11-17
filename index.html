@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>喫茶 まどべ｜窓辺で飲む、ていねいな一杯</title>
+<meta name="description" content="自家焙煎コーヒーと手作りの焼き菓子。窓辺の席でゆっくり過ごせる小さな喫茶店。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --soda: #cfe6d3;      /* メロンソーダ */
+  --soda-deep: #2f5d4c; /* 深い緑 */
+  --cherry: #c8372d;    /* さくらんぼ */
+  --ink: #1e2a26;
+  --paper: #fbfbf7;
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cherry); outline-offset: 3px; }
+
+/* ヘッダー */
+.site-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px clamp(20px, 5vw, 56px);
+  background: var(--soda);
+}
+.logo { font-family: var(--serif); font-weight: 700; font-size: 1.25rem; text-decoration: none; }
+.site-header nav { display: flex; gap: 24px; font-size: .95rem; }
+.site-header nav a { text-decoration: none; }
+.site-header nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+/* ヒーロー */
+.hero {
+  background: var(--soda);
+  padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 56px) clamp(56px, 9vw, 112px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(24px, 6vw, 80px);
+  align-items: start;
+  position: relative;
+  overflow: hidden;
+}
+.hero-text { max-width: 30em; align-self: end; }
+.hero-text p { margin-bottom: 28px; }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8.5vw, 6.5rem);
+  line-height: 1.25;
+  letter-spacing: .12em;
+  writing-mode: vertical-rl;
+  color: var(--soda-deep);
+  grid-column: 2;
+  grid-row: 1;
+}
+.hero-text { grid-column: 1; grid-row: 1; }
+.stamp {
+  position: absolute; right: clamp(16px, 4vw, 48px); bottom: clamp(16px, 4vw, 40px);
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--cherry); color: var(--paper);
+  display: grid; place-items: center;
+  font-family: var(--serif); font-weight: 700; font-size: .9rem; line-height: 1.4; text-align: center;
+  transform: rotate(-8deg);
+}
+.btn {
+  display: inline-block; padding: 12px 32px;
+  background: var(--soda-deep); color: var(--paper);
+  text-decoration: none; border-radius: 999px; font-weight: 500;
+  transition: background .2s;
+}
+.btn:hover { background: var(--ink); }
+
+/* 共通セクション */
+section { padding: clamp(56px, 9vw, 104px) clamp(20px, 5vw, 56px); }
+.inner { max-width: 720px; margin: 0 auto; }
+h2 {
+  font-family: var(--serif); font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.5; margin-bottom: 28px;
+  color: var(--soda-deep);
+}
+
+/* コンセプト */
+.about p + p { margin-top: 1.2em; }
+
+/* メニュー */
+.menu { background: var(--soda-deep); color: var(--paper); }
+.menu h2 { color: var(--paper); }
+.menu h3 { font-family: var(--serif); font-size: 1.1rem; margin: 40px 0 8px; color: var(--soda); }
+.menu ul { list-style: none; }
+.menu li {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 10px 0;
+}
+.menu li::after { content: none; }
+.menu .dots { flex: 1; border-bottom: 1px dotted rgba(251,251,247,.5); transform: translateY(-4px); }
+.menu .price { font-variant-numeric: tabular-nums; }
+.menu .note { font-size: .85rem; opacity: .8; margin-left: .5em; }
+.menu .small { margin-top: 32px; font-size: .85rem; opacity: .8; }
+
+/* 店舗情報 */
+dl { display: grid; grid-template-columns: 7em 1fr; gap: 0; border-top: 1px solid var(--ink); }
+dt, dd { padding: 16px 0; border-bottom: 1px solid rgba(30,42,38,.25); }
+dt { font-weight: 500; }
+.map {
+  margin-top: 32px; aspect-ratio: 16 / 9; background: var(--soda);
+  display: grid; place-items: center; color: var(--soda-deep); font-size: .9rem;
+}
+
+footer {
+  background: var(--soda); text-align: center;
+  padding: 32px 20px; font-size: .85rem;
+}
+
+/* スマホ */
+@media (max-width: 640px) {
+  .site-header nav { gap: 16px; font-size: .85rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { grid-column: 1; grid-row: 1; writing-mode: horizontal-tb; letter-spacing: .06em; }
+  .hero-text { grid-column: 1; grid-row: 2; }
+  .stamp { width: 72px; height: 72px; font-size: .75rem; }
+  dl { grid-template-columns: 5.5em 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#">喫茶 まどべ</a>
+  <nav aria-label="メインメニュー">
+    <a href="#about">お店について</a>
+    <a href="#menu">メニュー</a>
+    <a href="#info">店舗情報</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>窓辺で、<br>一杯。</h1>
+    <div class="hero-text">
+      <p>自家焙煎のコーヒーと、毎朝焼く菓子。<br>光のよく入る窓際の席で、急がない時間をどうぞ。</p>
+      <a class="btn" href="#menu">メニューを見る</a>
+    </div>
+    <div class="stamp" aria-hidden="true">本日<br>営業中</div>
+  </div>
+
+  <section id="about" class="about">
+    <div class="inner">
+      <h2>小さな店ですが、<br>ゆっくりしていってください。</h2>
+      <p>まどべは、8席だけの小さな喫茶店です。豆は店内で焙煎し、注文を受けてから一杯ずつ淹れています。</p>
+      <p>ケーキとプリンは店主の手作り。読書も、おしゃべりも、ぼんやりするのも歓迎です。</p>
+    </div>
+  </section>
+
+  <section id="menu" class="menu">
+    <div class="inner">
+      <h2>メニュー</h2>
+
+      <h3>コーヒー</h3>
+      <ul>
+        <li><span>ブレンドコーヒー</span><span class="dots"></span><span class="price">550円</span></li>
+        <li><span>カフェオレ</span><span class="dots"></span><span class="price">620円</span></li>
+        <li><span>水出しアイスコーヒー</span><span class="dots"></span><span class="price">600円</span></li>
+      </ul>
+
+      <h3>甘いもの</h3>
+      <ul>
+        <li><span>かためのプリン</span><span class="dots"></span><span class="price">480円</span></li>
+        <li><span>季節のケーキ</span><span class="dots"></span><span class="price">650円</span></li>
+        <li><span>クリームソーダ</span><span class="dots"></span><span class="price">700円</span></li>
+      </ul>
+
+      <h3>軽食</h3>
+      <ul>
+        <li><span>厚切りトースト</span><span class="note">ドリンクとセットで−100円</span><span class="dots"></span><span class="price">520円</span></li>
+        <li><span>ナポリタン</span><span class="dots"></span><span class="price">950円</span></li>
+      </ul>
+
+      <p class="small">価格は税込です。内容は季節により変わります。</p>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="inner">
+      <h2>店舗情報</h2>
+      <dl>
+        <dt>住所</dt><dd>〒000-0000 東京都○○区△△1-2-3 1F</dd>
+        <dt>アクセス</dt><dd>○○駅 東口から徒歩5分</dd>
+        <dt>営業時間</dt><dd>8:00〜18:00（ラストオーダー 17:30）</dd>
+        <dt>定休日</dt><dd>水曜日</dd>
+        <dt>電話</dt><dd><a href="tel:0000000000">00-0000-0000</a></dd>
+      </dl>
+      <div class="map" role="img" aria-label="地図の表示エリア">ここに地図を埋め込みます</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <small>© 2026 喫茶 まどべ</small>
+</footer>
+
+</body>
+</html>
